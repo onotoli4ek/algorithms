@@ -1,17 +1,25 @@
 package sort;
 
+import java.util.Arrays;
+
 public class InsertionSort {
     public static void main(String[] args) {
-        int a[] = new int[]{5, 2, 4, 6, 1, 3} ;
-        int j = 0;
-        for (int i = 1; i <= a.length - 1; i++ ){
-            int x = a[i];
-            j = i - 1;
-            while (i > 0 && a[i] > x){
-                a[i+1] = a[i];
-                a[i+1] = x;
+        int a[] = new int[]{5, 2, 4, 6, 1, 3, 0} ;
+        System.out.println("Insertion sort:");
+        System.out.print(Arrays.toString(a));
+        insertionSortInt(a);
+        System.out.print("   ->   " + Arrays.toString(a));
+    }
+    public static void insertionSortInt(int[] unsortedIntArr){
+        for (int i = 0; i < unsortedIntArr.length - 1; i++ ){
+            int newElement = unsortedIntArr[i+1];
+            int location = i;
+            while (location >= 0 && unsortedIntArr[location] > newElement){
+                unsortedIntArr[location+1] = unsortedIntArr[location];
+                unsortedIntArr[location] = newElement;
+                location--;
             }
         }
-        System.out.println(a);
+
     }
 }
